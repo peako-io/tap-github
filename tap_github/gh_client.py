@@ -12,6 +12,7 @@ import singer.metrics as metrics
 import backoff
 # Project imports
 from streams import get_catalog
+from exceptions import *
 # set default timeout of 300 seconds
 REQUEST_TIMEOUT = 300
 session = requests.Session()
@@ -130,61 +131,6 @@ def authed_get_all_pages(source, url, headers={}):
             url = r.links['next']['url']
         else:
             break
-
-
-def get_abs_path(path):
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
-
-
-def generate_pr_commit_schema(commit_schema):
-    pr_commit_schema = commit_schema.copy()
-    pr_commit_schema['properties']['pr_number'] = {
-        "type":  ["null", "integer"]
-    }
-    pr_commit_schema['properties']['pr_id'] = {
-        "type": ["null", "string"]
-    }
-    pr_commit_schema['properties']['id'] = {
-        "type": ["null", "string"]
-    }
-
-    return pr_commit_schema
-
-
-def load_schemas():
-    schemas = {}
-
-    for filename in os.listdir(get_abs_path('schemas')):
-        path = get_abs_path('schemas') + '/' + filename
-        file_raw = filename.replace('.json', '')
-        with open(path) as file:
-            schemas[file_raw] = json.load(file)
-
-    schemas['pr_commits'] = generate_pr_commit_schema(schemas['commits'])
-    return schemas
-
-
-def write_metadata(mdata, values, breadcrumb):
-    mdata.append(
-        {
-            'metadata': values,
-            'breadcrumb': breadcrumb
-        }
-    )
-
-
-def populate_metadata(schema_name, schema):
-    mdata = metadata.new()
-    #mdata = metadata.write(mdata, (), 'forced-replication-method', KEY_PROPERTIES[schema_name])
-    mdata = metadata.write(mdata, (), 'table-key-properties', KEY_PROPERTIES[schema_name])
-
-    for field_name in schema['properties'].keys():
-        if field_name in KEY_PROPERTIES[schema_name]:
-            mdata = metadata.write(mdata, ('properties', field_name), 'inclusion', 'automatic')
-        else:
-            mdata = metadata.write(mdata, ('properties', field_name), 'inclusion', 'available')
-
-    return mdata
 
 
 def verify_repo_access(url_for_repo, repo):
