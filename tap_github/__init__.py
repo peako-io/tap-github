@@ -22,6 +22,7 @@ from pull_requests.pulls import get_all_pull_requests
 from pull_requests.assignees import get_all_assignees
 from collaborators import get_all_collaborators
 from starrings import get_all_stargazers
+from actions.workflow_runs import get_all_workflow_runs
 
 logger = singer.get_logger()
 
@@ -41,7 +42,8 @@ SYNC_FUNCTIONS = {
     'issue_labels': get_all_issue_labels,
     'projects': get_all_projects,
     'commit_comments': get_all_commit_comments,
-    'teams': get_all_teams
+    'teams': get_all_teams,
+    'workflow_runs': get_all_workflow_runs,
 }
 
 SUB_STREAMS = {

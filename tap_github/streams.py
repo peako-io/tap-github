@@ -15,11 +15,23 @@ def get_catalog():
             'stream': schema_name,
             'tap_stream_id': schema_name,
             'schema': schema,
-            'metadata' : metadata.to_list(mdata),
+            'metadata': metadata.to_list(mdata),
             'key_properties': KEY_PROPERTIES[schema_name],
         }
         streams.append(catalog_entry)
     return {'streams': streams}
+
+
+def load_schemas():
+    schemas = {}
+    for filename in os.listdir(get_abs_path('schemas')):
+        print(filename)
+        path = get_abs_path('schemas') + '/' + filename
+        file_raw = filename.replace('.json', '')
+        with open(path) as file:
+            schemas[file_raw] = json.load(file)
+    schemas['pr_commits'] = generate_pr_commit_schema(schemas['commits'])
+    return schemas
 
 
 def get_selected_streams(catalog):
