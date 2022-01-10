@@ -50,6 +50,10 @@ class DependencyException(Exception):
     pass
 
 
+class SchemaFileFormatException(Exception):
+    pass
+
+
 ERROR_CODE_EXCEPTION_MAPPING = {
     301: {
         "raise_exception": MovedPermanentlyError,
