@@ -28,5 +28,5 @@ KEY_PROPERTIES = {
     'teams': ['id'],
     'team_members': ['id'],
     'team_memberships': ['url'],
-    'actions_runs': ['id']
+    'workflow_runs': ['id']
 }

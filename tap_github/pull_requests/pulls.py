@@ -4,7 +4,8 @@ import singer
 import singer.metrics as metrics
 from singer import metadata
 # Project imports
-from gh_client import get_bookmark, authed_get_all_pages, authed_get
+from gh_client import authed_get_all_pages, authed_get
+from streams import get_bookmark
 from pull_requests.pr_detail import get_pr_detail, enhance_pull
 from pull_requests.reviews import get_reviews_for_pr
 from pull_requests.comments import get_review_comments_for_pr

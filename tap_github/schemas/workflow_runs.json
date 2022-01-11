@@ -92,11 +92,7 @@
       "format": "date-time"
     },
     "pull_requests": {
-      "type": [
-        "null",
-        "array"
-      ],
-      "additionalProperties": false,
+      "type": ["null", "array"],
       "items": {
         "type": ["null", "object"],
         "properties": {
@@ -108,7 +104,6 @@
           },
           "head": {
             "type": ["null", "object"],
-            "additionalProperties": false,
             "properties": {
               "ref": {
                 "type": ["null", "string"]
@@ -117,7 +112,6 @@
           },
           "base": {
             "type": ["null", "object"],
-            "additionalProperties": false,
             "properties": {
               "ref": {
                 "type": ["null", "string"]

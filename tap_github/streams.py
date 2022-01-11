@@ -1,9 +1,11 @@
 # Python imports
 import os
 import json
+import collections
 # Third-Party imports
 import singer
 from singer import metadata
+import singer.bookmarks as bookmarks
 # Project imports
 from exceptions import *
 from settings import KEY_PROPERTIES
@@ -109,3 +111,53 @@ def write_metadata(mdata, values, breadcrumb):
             'breadcrumb': breadcrumb
         }
     )
+
+
+def get_bookmark(state, repo, stream_name, bookmark_key, start_date):
+    repo_stream_dict = bookmarks.get_bookmark(state, repo, stream_name)
+    if repo_stream_dict:
+        return repo_stream_dict.get(bookmark_key)
+    if start_date:
+        return start_date
+    return None
+
+
+def translate_state(state, catalog, repositories):
+    '''
+    This tap used to only support a single repository, in which case the
+    state took the shape of:
+    {
+      "bookmarks": {
+        "commits": {
+          "since": "2018-11-14T13:21:20.700360Z"
+        }
+      }
+    }
+    The tap now supports multiple repos, so this function should be called
+    at the beginning of each run to ensure the state is translate to the
+    new format:
+    {
+      "bookmarks": {
+        "singer-io/tap-adwords": {
+          "commits": {
+            "since": "2018-11-14T13:21:20.700360Z"
+          }
+        }
+        "singer-io/tap-salesforce": {
+          "commits": {
+            "since": "2018-11-14T13:21:20.700360Z"
+          }
+        }
+      }
+    }
+    '''
+    nested_dict = lambda: collections.defaultdict(nested_dict)
+    new_state = nested_dict()
+    for stream in catalog['streams']:
+        stream_name = stream['tap_stream_id']
+        for repo in repositories:
+            if bookmarks.get_bookmark(state, repo, stream_name):
+                return state
+            if bookmarks.get_bookmark(state, stream_name, 'since'):
+                new_state['bookmarks'][repo][stream_name]['since'] = bookmarks.get_bookmark(state, stream_name, 'since')
+    return new_state
