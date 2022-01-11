@@ -24,8 +24,8 @@ setup(name='tap-github',
           [console_scripts]
           tap-github=tap_github:main
       ''',
-      packages=['tap_github'],
-      package_data = {
+      packages=find_packages(include=["tap_github", "tap_github.*"], exclude=["*.tests"]),
+      package_data={
           'tap_github': ['tap_github/schemas/*.json']
       },
       include_package_data=True
