@@ -1,7 +1,11 @@
 # Python imports
 # Third-Party imports
 import singer
+import singer.metrics as metrics
+from singer import metadata
 # Project imports
+from tap_github.streams import get_bookmark
+from tap_github.gh_client import authed_get_all_pages
 
 
 def get_commits_for_pr(pr_number, pr_id, schema, repo_path, state, mdata):

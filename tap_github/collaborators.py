@@ -1,7 +1,9 @@
 # Python imports
 # Third-Party imports
 import singer
+from singer import metadata
 # Project imports
+from tap_github.gh_client import authed_get_all_pages
 
 
 def get_all_collaborators(schema, repo_path, state, mdata, _start_date):
