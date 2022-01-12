@@ -6,8 +6,8 @@ import singer
 import singer.metrics as metrics
 from singer import metadata
 # Project imports
-from gh_client import authed_get_all_pages, authed_get
-from streams import get_bookmark
+from tap_github.gh_client import authed_get_all_pages, authed_get
+from tap_github.streams import get_bookmark
 
 
 logger = singer.get_logger()

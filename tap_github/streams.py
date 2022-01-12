@@ -7,8 +7,8 @@ import singer
 from singer import metadata
 import singer.bookmarks as bookmarks
 # Project imports
-from exceptions import *
-from settings import KEY_PROPERTIES
+from tap_github.exceptions import *
+from tap_github.settings import KEY_PROPERTIES
 
 
 logger = singer.get_logger()
