@@ -3,6 +3,7 @@
 import singer
 # Project imports
 
+
 def get_all_stargazers(schema, repo_path, state, mdata, _start_date):
     '''
     https://developer.github.com/v3/activity/starring/#list-stargazers

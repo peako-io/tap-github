@@ -1,7 +1,7 @@
 # Python imports
 # Third-Party imports
 # Project imports
-from gh_client import authed_get
+from tap_github.gh_client import authed_get
 
 
 def get_pr_detail(pull_number, repo_path):

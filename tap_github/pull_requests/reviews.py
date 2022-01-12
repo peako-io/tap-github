@@ -3,7 +3,7 @@
 import singer
 from singer import metadata
 # Project imports
-from gh_client import authed_get_all_pages
+from tap_github.gh_client import authed_get_all_pages
 
 
 def get_reviews_for_pr(pr_number, schema, repo_path, state, mdata, pr_id):

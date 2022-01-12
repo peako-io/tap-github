@@ -11,8 +11,8 @@ import singer.bookmarks as bookmarks
 import singer.metrics as metrics
 import backoff
 # Project imports
-from streams import get_catalog
-from exceptions import *
+from tap_github.streams import get_catalog
+from tap_github.exceptions import *
 # set default timeout of 300 seconds
 REQUEST_TIMEOUT = 300
 session = requests.Session()

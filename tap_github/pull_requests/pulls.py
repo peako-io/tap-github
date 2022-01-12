@@ -4,11 +4,11 @@ import singer
 import singer.metrics as metrics
 from singer import metadata
 # Project imports
-from gh_client import get_bookmark, authed_get_all_pages, authed_get
-from pull_requests.pr_detail import get_pr_detail, enhance_pull
-from pull_requests.reviews import get_reviews_for_pr
-from pull_requests.comments import get_review_comments_for_pr
-from pull_requests.commits import get_commits_for_pr
+from tap_github.gh_client import get_bookmark, authed_get_all_pages, authed_get
+from tap_github.pull_requests.pr_detail import get_pr_detail, enhance_pull
+from tap_github.pull_requests.reviews import get_reviews_for_pr
+from tap_github.pull_requests.comments import get_review_comments_for_pr
+from tap_github.pull_requests.commits import get_commits_for_pr
 
 
 def get_all_pull_requests(schemas, repo_path, state, mdata, start_date):

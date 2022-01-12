@@ -2,26 +2,26 @@ import argparse
 import os
 import json
 import singer
-from gh_client import *
-from exceptions import *
-from settings import *
-from streams import *
-from teams import get_all_teams
-from issues.issues import get_all_issues, get_all_issue_events
-from issues.milestones import get_all_issue_milestones
-from issues.labels import get_all_issue_labels
-from issues.comments import get_all_comments
-from events import get_all_events
-from commits.commits import get_all_commits
-from commits.comments import get_all_commit_comments
-from projects.projects import get_all_projects
-from projects.cards import get_all_project_cards
-from projects.columns import get_all_project_columns
-from releases import get_all_releases
-from pull_requests.pulls import get_all_pull_requests
-from pull_requests.assignees import get_all_assignees
-from collaborators import get_all_collaborators
-from starrings import get_all_stargazers
+from tap_github.gh_client import *
+from tap_github.exceptions import *
+from tap_github.settings import *
+from tap_github.streams import *
+from tap_github.teams import get_all_teams
+from tap_github.issues.issues import get_all_issues, get_all_issue_events
+from tap_github.issues.milestones import get_all_issue_milestones
+from tap_github.issues.labels import get_all_issue_labels
+from tap_github.issues.comments import get_all_comments
+from tap_github.events import get_all_events
+from tap_github.commits.commits import get_all_commits
+from tap_github.commits.comments import get_all_commit_comments
+from tap_github.projects.projects import get_all_projects
+from tap_github.projects.cards import get_all_project_cards
+from tap_github.projects.columns import get_all_project_columns
+from tap_github.releases import get_all_releases
+from tap_github.pull_requests.pulls import get_all_pull_requests
+from tap_github.pull_requests.assignees import get_all_assignees
+from tap_github.collaborators import get_all_collaborators
+from tap_github.starrings import get_all_stargazers
 
 logger = singer.get_logger()
 
