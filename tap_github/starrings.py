@@ -2,6 +2,7 @@
 # Third-Party imports
 import singer
 from singer import metadata
+import singer.metrics as metrics
 # Project imports
 from tap_github.gh_client import authed_get_all_pages
 
