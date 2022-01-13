@@ -34,6 +34,18 @@
         "string"
       ]
     },
+    "head_commit_author_id": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "head_commit_author_login": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
     "run_number": {
       "type": [
         "null",
@@ -124,6 +136,12 @@
     "head_commit": {
       "type": ["null", "object"],
       "properties": {
+        "id": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
         "timestamp": {
           "type": [
             "null",
