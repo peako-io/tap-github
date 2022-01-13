@@ -120,6 +120,40 @@
           }
         }
       }
+    },
+    "head_commit": {
+      "type": ["null", "object"],
+      "properties": {
+        "timestamp": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "author": {
+          "type": ["null", "object"],
+          "properties": {
+            "name": {
+              "type": ["null", "string"]
+            },
+            "email": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "committer": {
+          "type": ["null", "object"],
+          "properties": {
+            "name": {
+              "type": ["null", "string"]
+            },
+            "email": {
+              "type": ["null", "string"]
+            }
+          }
+        }
+      }
     }
   }
 }
