@@ -1,0 +1,159 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "_sdc_repository": {
+      "type": [
+        "string"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "node_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "head_branch": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "head_sha": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "run_number": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "event": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "status": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "conclusion": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "workflow_id": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "run_attempt": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "run_started_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "pull_requests": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "id": {
+            "type": ["null", "integer"]
+          },
+          "number": {
+            "type": ["null", "integer"]
+          },
+          "head": {
+            "type": ["null", "object"],
+            "properties": {
+              "ref": {
+                "type": ["null", "string"]
+              }
+            }
+          },
+          "base": {
+            "type": ["null", "object"],
+            "properties": {
+              "ref": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "head_commit": {
+      "type": ["null", "object"],
+      "properties": {
+        "timestamp": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "format": "date-time"
+        },
+        "author": {
+          "type": ["null", "object"],
+          "properties": {
+            "name": {
+              "type": ["null", "string"]
+            },
+            "email": {
+              "type": ["null", "string"]
+            }
+          }
+        },
+        "committer": {
+          "type": ["null", "object"],
+          "properties": {
+            "name": {
+              "type": ["null", "string"]
+            },
+            "email": {
+              "type": ["null", "string"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
