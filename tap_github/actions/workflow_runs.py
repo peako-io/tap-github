@@ -31,6 +31,7 @@ def get_all_workflow_runs(schemas, repo_path, state, mdata, start_date):
                 if bookmark_time and singer.utils.strptime_to_utc(run.get('updated_at')) < bookmark_time:
                     return state
                 run['_sdc_repository'] = repo_path
+                run = enhance_workflow_run(run, repo_path)
                 with singer.Transformer() as transformer:
                     record = transformer.transform(run, schemas, metadata=metadata.to_map(mdata))
                     singer.write_record('workflow_runs', record, time_extracted=extraction_time)
@@ -57,3 +58,24 @@ def get_workflow_run_bookmark_time(bookmark_value):
     if bookmark_value:
         bookmark_time = singer.utils.strptime_to_utc(bookmark_value)
     return bookmark_time
+
+
+def get_commit_detail(repo_path, commit_id):
+    commit = authed_get(
+        'pull',
+        f'https://api.github.com/repos/{repo_path}/commits/{commit_id}'
+    )
+    return commit.json()
+
+
+def enhance_workflow_run_with_commit_info(run, repo_path):
+    commit_id = run["head_commit"]["id"]
+    commit = get_commit_detail(repo_path, commit_id)
+    run["head_commit_author_id"] = commit["author"]["id"]
+    run["head_commit_author_login"] = commit["author"]["login"]
+    return run
+
+
+def enhance_workflow_run(run, repo_path):
+    run = enhance_workflow_run_with_commit_info(run, repo_path)
+    return run
