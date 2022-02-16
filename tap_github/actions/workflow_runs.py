@@ -71,8 +71,9 @@ def get_commit_detail(repo_path, commit_id):
 def enhance_workflow_run_with_commit_info(run, repo_path):
     commit_id = run["head_commit"]["id"]
     commit = get_commit_detail(repo_path, commit_id)
-    run["head_commit_author_id"] = commit["author"]["id"]
-    run["head_commit_author_login"] = commit["author"]["login"]
+    run["head_commit_author_id"] = commit["author"]["id"] if commit["author"] else ""
+    run["head_commit_author_login"] = commit["author"]["login"] if commit["author"] else ""
+    run["head_commit_author_email"] = commit["commit"]["author"]["email"] if commit["commit"] else ""
     return run
 
 

@@ -46,6 +46,12 @@
         "string"
       ]
     },
+    "head_commit_author_email": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
     "run_number": {
       "type": [
         "null",
