@@ -58,5 +58,5 @@ def get_all_projects(schemas, repo_path, state, mdata, start_date):
                                     singer.write_record('project_cards', project_card_rec, time_extracted=extraction_time)
                                     singer.write_bookmark(state, repo_path, 'project_cards', {'since': singer.utils.strftime(extraction_time)})
         except GithubException:
-            logger.info("Projects are disabled on this repo %s", repo)
+            logger.info("Projects are disabled on this repo %s", repo_path)
     return state
