@@ -84,7 +84,7 @@ def do_sync(config, state, catalog):
     selected_stream_ids = get_selected_streams(catalog)
     validate_dependencies(selected_stream_ids)
 
-    repositories = list(filter(None, config['repository'].split(' ')))
+    repositories = extract_repos_from_config(config)
 
     state = translate_state(state, catalog, repositories)
     singer.write_state(state)
@@ -134,6 +134,11 @@ def do_sync(config, state, catalog):
 @singer.utils.handle_top_exception(logger)
 def main():
     args = singer.utils.parse_args(REQUIRED_CONFIG_KEYS)
+
+    config_max_sleep = args.config.get('max_sleep_seconds')
+    # set global `MAX_SLEEP_SECONDS` for rate_throttling function or use default
+    global MAX_SLEEP_SECONDS  # pylint: disable=global-statement
+    MAX_SLEEP_SECONDS = config_max_sleep if config_max_sleep else DEFAULT_SLEEP_SECONDS
 
     if args.discover:
         do_discover(args.config)
