@@ -6,7 +6,7 @@ from singer import metadata
 # Project imports
 from tap_github.streams import get_bookmark
 from tap_github.gh_client import authed_get_all_pages
-from exceptions import GithubException
+from tap_github.exceptions import GithubException
 
 
 logger = singer.get_logger()
