@@ -120,4 +120,4 @@ class TestExceptionHandling(unittest.TestCase):
         mocked_request.return_value = get_response(200, json)
 
         resp = tap_github.authed_get("", "")
-        self.assertEquals(json, resp.json())
+        self.assertEqual(json, resp.json())
