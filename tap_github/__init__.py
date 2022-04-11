@@ -40,7 +40,7 @@ KEY_PROPERTIES = {
     'project_cards': ['id'],
     'repos': ['id'],
     'teams': ['id'],
-    'team_members': ['id'],
+    'team_members': ['id', 'team_slug'],
     'team_memberships': ['url'],
     'workflow_runs': ['id']
 }
