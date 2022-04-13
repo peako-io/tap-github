@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pipenv = "==2022.1.8"
+vcrpy = "4.1.1"
+singer-tap-tester = "0.0.1"
+
+[packages]
+backoff = "==1.8"
+certifi = "==2021.10.8"
+jsonschema = "==2.6.0"
+python-dateutil = "==2.8.2"
+pytz = "==2021.3"
+simplejson = "==3.11.1"
+singer-python = "==5.12.2"
+six = "==1.16.0"
+urllib3 = "==1.26.9"
+
+[requires]
+python_version = "3.9"
