@@ -891,7 +891,7 @@ def get_reviews_for_pr(pr_number, schema, repo_path, state, mdata, pr_id):
         reviews = response.json()
         for review in reviews:
             review['_sdc_repository'] = repo_path
-            review['pull_request_id'] = pr_id
+            review['pull_request_id'] = str(pr_id)
             review['pull_request_number'] = pr_number
             with singer.Transformer() as transformer:
                 rec = transformer.transform(review, schema, metadata=metadata.to_map(mdata))
